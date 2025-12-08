@@ -42,13 +42,12 @@ jupyter notebook financial_sentiment_analysis.ipynb
 ```
 Sentiment-Analyzer/
 ├── financial_sentiment_analysis.ipynb   # Main working demo
-├── sentiment_analysis.py                 # Core NLP module (FinBERT)
-├── batch_analysis.py                     # Batch multi-filing processor
+├── PRESENTATION_GUIDE.md                 # 15-min presentation script
 ├── requirements.txt                      # Python dependencies
 ├── README.md                             # This file
-├── PRESENTATION_GUIDE.md                 # 15-min presentation script
-├── data/                                 # Sample SEC filings (JSON)
-└── output/                               # Results directory
+└── input/                                # Sample SEC filings (JSON)
+    ├── 50471_10K_2021_0001654954-21-010502.json
+    └── 8670_10K_2021_0000008670-21-000027.json
 ```
 
 ## 📦 Dependencies
@@ -81,23 +80,19 @@ ipython>=8.0.0               # IPython
    - Cell 11-14: Risk assessment
    - Cell 15-18: Batch processing
 
-### Command-Line Usage
+### Command-Line Usage (Optional)
 
-**Single filing analysis**:
-```bash
-python sentiment_analysis.py --input-file data/filing.json --section item_7 --visualize
-```
-
-**Batch processing**:
-```bash
-python batch_analysis.py --input-dir data/ --output output/batch_results.csv
-```
+The notebook can be converted to Python scripts if needed, but the interactive notebook format is the primary deliverable.
 
 ## 📊 What the Tool Does
 
 ### Analysis Workflow
 1. **Load** SEC filing JSON (Item 7: MD&A, Item 1A: Risk Factors)
 2. **Process** text through FinBERT (finance-specific sentiment model)
+3. **Aggregate** sentiment scores per section
+4. **Check** cross-section consistency
+5. **Flag** risks and inconsistencies
+6. **Visualize** results with charts and alerts
 3. **Detect** tone inconsistencies between sections
 4. **Flag** business risks (over-optimism, distress signals, vague language)
 5. **Generate** reports and visualizations
